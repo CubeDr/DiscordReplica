@@ -7,7 +7,7 @@ import javafx.scene.effect.ColorAdjust
 import tornadofx.*
 
 class TitleBarView: View() {
-    private val controller: TitlebarController by inject()
+    private val controller: TitleBarController by inject()
 
     override val root = borderpane {
         addClass(DiscordCss.titleBar)

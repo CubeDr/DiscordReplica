@@ -8,7 +8,7 @@ import tornadofx.Controller
 
 private fun MouseEvent.stage() = (this.source as Node).scene.window as Stage
 
-class TitlebarController: Controller() {
+class TitleBarController: Controller() {
     var x: Double = 500.0
     var y: Double = 500.0
 
