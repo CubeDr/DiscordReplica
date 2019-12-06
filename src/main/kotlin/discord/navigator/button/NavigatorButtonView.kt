@@ -23,7 +23,10 @@ class NavigatorButtonView : Fragment() {
         // icon
         stackpane {
             addClass(NavigatorButtonViewCss.face)
-            if (image != null) imageview(image!!)
+            if (image != null) imageview(image!!) {
+                fitWidth = 35.0
+                isPreserveRatio = true
+            }
             else label(text) {
                 font = loadFont("/fonts/NotoSansKR-Regular.otf", 20.0)
 

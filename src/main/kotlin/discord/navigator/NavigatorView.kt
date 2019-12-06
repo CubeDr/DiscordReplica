@@ -1,10 +1,9 @@
 package discord.navigator
 
+import discord.navigator.button.NavigatorButtonViewCss
 import discord.navigator.button.navButton
-import tornadofx.View
-import tornadofx.c
-import tornadofx.style
-import tornadofx.vbox
+import javafx.scene.image.Image
+import tornadofx.*
 
 class NavigatorView : View() {
     val servers = listOf(
@@ -19,11 +18,24 @@ class NavigatorView : View() {
         style {
             backgroundColor += c("#202225")
         }
-
         spacing = 6.0
 
+        // padding
+        pane().prefHeight = 1.0
+
         // Home
+        navButton("Home", Image("/images/home-icon.png"))
         // Divider
+        borderpane {
+            left = pane().apply { prefWidth = 20.0 }
+            center = pane().apply {
+                style {
+                    prefHeight = 1.px
+                    backgroundColor += NavigatorButtonViewCss.buttonBackgroundColor
+                }
+            }
+            right = pane().apply { prefWidth = 20.0 }
+        }
 
         servers.forEach { name ->
             navButton(name)
