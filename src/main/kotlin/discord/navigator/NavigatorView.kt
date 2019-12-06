@@ -1,7 +1,10 @@
 package discord.navigator
 
-import discord.navigator.button.NavigatorButtonView
-import tornadofx.*
+import discord.navigator.button.navButton
+import tornadofx.View
+import tornadofx.c
+import tornadofx.style
+import tornadofx.vbox
 
 class NavigatorView : View() {
     val servers = listOf(
@@ -23,11 +26,7 @@ class NavigatorView : View() {
         // Divider
 
         servers.forEach { name ->
-            this += find<NavigatorButtonView>(
-                params = mapOf(
-                    NavigatorButtonView::text to name
-                )
-            )
+            navButton(name)
         }
     }
 }

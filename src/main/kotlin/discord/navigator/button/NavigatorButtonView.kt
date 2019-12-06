@@ -2,6 +2,7 @@ package discord.navigator.button
 
 import discord.Utils
 import javafx.application.Platform
+import javafx.event.EventTarget
 import javafx.scene.image.Image
 import javafx.scene.text.Font
 import tornadofx.*
@@ -46,4 +47,11 @@ class NavigatorButtonView : Fragment() {
         // right margin
         pane().prefWidth = 10.0
     }
+}
+
+public fun EventTarget.navButton(text: String, image: Image? = null) {
+    this += find<NavigatorButtonView>(params = mapOf(
+        NavigatorButtonView::text to text,
+        NavigatorButtonView::image to image
+    ))
 }
