@@ -42,5 +42,9 @@ class TitleBarView: View() {
         setOnMouseDragged {
             controller.dragged(it)
         }
+
+        setOnMouseClicked {
+            controller.clicked(it)
+        }
     }
 }

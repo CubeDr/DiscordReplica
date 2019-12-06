@@ -44,6 +44,10 @@ class TitleBarController: Controller() {
         sceneY = event.sceneY
     }
 
+    fun clicked(event: MouseEvent) {
+        if(event.clickCount == 2) maximize(event)
+    }
+
     fun minimize(event: MouseEvent) {
         event.stage().isIconified = true
     }
