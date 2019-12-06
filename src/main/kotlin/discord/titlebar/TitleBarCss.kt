@@ -1,14 +1,14 @@
-package discord
+package discord.titlebar
 
 import javafx.scene.paint.Color
 import tornadofx.*
 
-class DiscordCss: Stylesheet() {
+class TitleBarCss: Stylesheet() {
     companion object {
         val titleBar by cssclass()
         val closeButton by cssclass()
-        val titleBarButtonHoverColor: Color = Color.DARKGRAY
-        val titleBarCloseButtonHoverColor: Color = Color.RED
+        val buttonHoverColor: Color = Color.DARKGRAY
+        val closeButtonHoverColor: Color = Color.RED
     }
 
     init {
@@ -26,12 +26,12 @@ class DiscordCss: Stylesheet() {
                 backgroundRadius = multi(box(0.px))
 
                 and(hover) {
-                    backgroundColor += titleBarButtonHoverColor
+                    backgroundColor += buttonHoverColor
                 }
 
                 and(closeButton) {
                     and(hover) {
-                        backgroundColor += titleBarCloseButtonHoverColor
+                        backgroundColor += closeButtonHoverColor
                     }
                 }
             }

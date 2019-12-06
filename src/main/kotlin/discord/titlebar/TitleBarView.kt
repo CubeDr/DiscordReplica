@@ -1,6 +1,5 @@
 package discord.titlebar
 
-import discord.DiscordCss
 import javafx.geometry.Pos
 import javafx.scene.CacheHint
 import javafx.scene.effect.ColorAdjust
@@ -10,7 +9,8 @@ class TitleBarView: View() {
     private val controller: TitleBarController by inject()
 
     override val root = borderpane {
-        addClass(DiscordCss.titleBar)
+        importStylesheet<TitleBarCss>()
+        addClass(TitleBarCss.titleBar)
         left = hbox {
             alignment = Pos.CENTER
             paddingLeft = 5.0
@@ -31,7 +31,7 @@ class TitleBarView: View() {
             button("ㅡ").setOnMouseClicked { controller.minimize(it) }
             button("□").setOnMouseClicked { controller.maximize(it) }
             button("X")
-                .addClass(DiscordCss.closeButton)
+                .addClass(TitleBarCss.closeButton)
                 .setOnMouseClicked { controller.close(it) }
         }
 

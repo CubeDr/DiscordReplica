@@ -6,7 +6,7 @@ import tornadofx.App
 import tornadofx.launch
 import tornadofx.reloadStylesheetsOnFocus
 
-class Discord: App(DiscordView::class, DiscordCss::class) {
+class Discord: App(DiscordView::class) {
     init {
         reloadStylesheetsOnFocus()
     }
