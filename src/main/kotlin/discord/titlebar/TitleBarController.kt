@@ -1,5 +1,6 @@
 package discord.titlebar
 
+import javafx.geometry.Rectangle2D
 import javafx.scene.Node
 import javafx.scene.input.MouseEvent
 import javafx.stage.Screen
@@ -9,25 +10,38 @@ import tornadofx.Controller
 private fun MouseEvent.stage() = (this.source as Node).scene.window as Stage
 
 class TitleBarController: Controller() {
-    var x: Double = 500.0
-    var y: Double = 500.0
+    private val screen: Rectangle2D
+        get() = Screen.getPrimary().visualBounds
 
-    var isFullscreen: Boolean = false
-    var originalX: Double = 0.0
-    var originalY: Double = 0.0
-    var originalWidth: Double = 600.0
-    var originalHeight: Double = 400.0
+    private var sceneX: Double = 500.0
+    private var sceneY: Double = 500.0
+
+    private var isFullscreen: Boolean = false
+    private var originalX: Double = 0.0
+    private var originalY: Double = 0.0
+    private var originalWidth: Double = 600.0
+    private var originalHeight: Double = 400.0
 
     fun dragged(event: MouseEvent) {
         val stage = event.stage()
 
-        stage.x = event.screenX - x
-        stage.y = event.screenY - y
+        if(isFullscreen) {
+            stage.width = originalWidth
+            stage.height = originalHeight
+
+            sceneX *= originalWidth / screen.width
+            sceneY *= originalHeight / screen.height
+
+            isFullscreen = false
+        }
+
+        stage.x = event.screenX - sceneX
+        stage.y = event.screenY - sceneY
     }
 
     fun pressed(event: MouseEvent) {
-        x = event.sceneX
-        y = event.sceneY
+        sceneX = event.sceneX
+        sceneY = event.sceneY
     }
 
     fun minimize(event: MouseEvent) {
@@ -50,11 +64,10 @@ class TitleBarController: Controller() {
             originalWidth = stage.width
             originalHeight = stage.height
 
-            val bounds = Screen.getPrimary().visualBounds
-            stage.x = bounds.minX
-            stage.y = bounds.minY
-            stage.width = bounds.width
-            stage.height = bounds.height
+            stage.x = screen.minX
+            stage.y = screen.minY
+            stage.width = screen.width
+            stage.height = screen.height
 
             isFullscreen = true
         }
