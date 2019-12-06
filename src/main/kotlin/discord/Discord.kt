@@ -4,8 +4,13 @@ import javafx.stage.Stage
 import javafx.stage.StageStyle
 import tornadofx.App
 import tornadofx.launch
+import tornadofx.reloadStylesheetsOnFocus
 
-class Discord: App(DiscordView::class) {
+class Discord: App(DiscordView::class, DiscordCss::class) {
+    init {
+        reloadStylesheetsOnFocus()
+    }
+
     override fun start(stage: Stage) {
         stage.initStyle(StageStyle.UNDECORATED)
         stage.width = 800.0
