@@ -15,7 +15,7 @@ class TitleBarView: View() {
             alignment = Pos.CENTER
             paddingLeft = 5.0
 
-            imageview("/logo.png") {
+            imageview("/images/logo.png") {
                 val blackout = ColorAdjust()
                 blackout.brightness = 0.4
                 effect = blackout

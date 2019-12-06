@@ -5,7 +5,6 @@ import tornadofx.*
 
 class NavigatorView : View() {
     val servers = listOf(
-        "Home",
         "하이롤",
         "알고",
         "소전1",
@@ -19,6 +18,9 @@ class NavigatorView : View() {
         }
 
         spacing = 6.0
+
+        // Home
+        // Divider
 
         servers.forEach { name ->
             this += find<NavigatorButtonView>(
