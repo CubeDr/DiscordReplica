@@ -22,7 +22,7 @@ class TitleBarView: View() {
                 isCache = true
                 cacheHint = CacheHint.SPEED
 
-                fitWidth = 60.0
+                fitWidth = 55.0
                 isPreserveRatio = true
                 isSmooth = true
             }
