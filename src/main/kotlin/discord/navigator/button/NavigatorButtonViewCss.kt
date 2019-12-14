@@ -9,6 +9,7 @@ class NavigatorButtonViewCss: Stylesheet() {
         val face by cssclass()
 
         val buttonBackgroundColor = c("#36393F")
+        val buttonHoverBackgroundColor = c("#7289DA")
         val textColor = c("#C8C9CB")
     }
 
@@ -25,6 +26,11 @@ class NavigatorButtonViewCss: Stylesheet() {
 
             label {
                 textFill = textColor
+            }
+
+            and(hover) {
+                backgroundColor += buttonHoverBackgroundColor
+                backgroundRadius = multi(box(35.percent))
             }
         }
     }
